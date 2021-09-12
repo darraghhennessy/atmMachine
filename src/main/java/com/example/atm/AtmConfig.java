@@ -11,9 +11,9 @@ public class AtmConfig {
 
     @Bean
     CommandLineRunner commandLineRunner2(AtmRepository atmRepository) {
-        return args -> { Atm atm = new Atm(10, 30, 30, 20);
+        return args -> { Atm atm = new Atm(1, 10, 30, 30, 20);
 
-            atmRepository.saveAll(List.of(atm));
+            atmRepository.save(atm);
 
         };
     }

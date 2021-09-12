@@ -19,4 +19,8 @@ public class AtmService {
         return atmRepository.findAll();
     }
 
+    public void setAtm(Atm atm) {
+        atmRepository.saveAndFlush(atm);
+    }
+
 }
