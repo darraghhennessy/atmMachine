@@ -102,16 +102,16 @@ public class BankController {
                 int tensDispensed = 0;
                 int fivesDispensed = 0;
 
+                if (amount>this.getMaximumAmount()) {
+                    return ("Request is greater than maximum amount available. Please request up to " + this.getMaximumAmount());
+                }
+
                 if (!isValidRequest(amount)) {
                     return ("Atm does not have the notes required to fulfill this request");
                 }
 
                 if (amount<5) {
                     return ("Invalid amount requested. Please request at least €5.");
-                }
-
-                if (amount>this.getMaximumAmount()) {
-                    return ("Request is greater than maximum amount available. Please request up to " + this.getMaximumAmount());
                 }
 
                 if (amount>(account.getOpeningBalance()+account.getOverdraft())) {
@@ -146,10 +146,11 @@ public class BankController {
 
                 }
                 int remainingBalance = account.getOpeningBalance()-total;
+                int notesDispensed =  fiftiesDispensed+twentiesDispensed+tensDispensed+fivesDispensed;
                 bankService.setAtm(new Atm(1, fifties, twenties, tens, twenties));
                 bankService.setAccount(new Account(account.getId(), account.getAccountNo(), remainingBalance, account.getOverdraft(), account.getPin()));
 
-                return("Dispensed: " + total + ". This includes: Fifties: " + fiftiesDispensed +
+                return("Dispensed: " + total + ". Total notes dispensed: " + notesDispensed + ". This includes: Fifties: " + fiftiesDispensed +
                         " Twenties: " + twentiesDispensed +
                         " Tens: " + tensDispensed +
                         " Fives: " + fivesDispensed + ". Remaining balance is: " + remainingBalance);
