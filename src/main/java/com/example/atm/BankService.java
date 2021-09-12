@@ -17,6 +17,16 @@ public class BankService {
         this.accountRepository = accountRepository;
     }
 
+    public void initializeDatabases() {
+        Account account1 = new Account(123456789, 1234, 800, 200);
+        Account account2 = new Account(987654321, 4321, 1230, 150);
+
+        Atm atm = new Atm(1, 10, 30, 30, 20);
+
+        atmRepository.save(atm);
+        accountRepository.saveAll(List.of(account1, account2));
+    }
+
     public List<Atm> getAtms() {
         return atmRepository.findAll();
     }
