@@ -44,50 +44,20 @@ public class Account {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public int getAccountNo() {
         return accountNo;
-    }
-
-    public void setAccountNo(int accountNo) {
-        this.accountNo = accountNo;
     }
 
     public int getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
-        this.pin = pin;
-    }
-
     public int getOpeningBalance() {
         return openingBalance;
-    }
-
-    public void setOpeningBalance(int openingBalance) {
-        this.openingBalance = openingBalance;
     }
 
     public int getOverdraft() {
         return overdraft;
     }
 
-    public void setOverdraft(int overdraft) {
-        this.overdraft = overdraft;
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", accountNo=" + accountNo +
-                ", pin=" + pin +
-                ", openingBalance=" + openingBalance +
-                ", overdraft=" + overdraft +
-                '}';
-    }
 }

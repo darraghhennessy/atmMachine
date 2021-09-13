@@ -68,4 +68,10 @@ class AtmApplicationTests {
 		assertThat(bankService.getAccounts().get(0).getOpeningBalance()).isEqualTo(initialBalance);
 	}
 
+	@Test
+	void getMaximumWithdrawalGivesCorrectAmount () {
+		bankService.initializeDatabases();
+		assertThat(bankController.getMaximumWithdrawal(123456789,1234)).contains("Maximum withdrawal amount is: 1000");
+	}
+
 }
